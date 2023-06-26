@@ -1,0 +1,9 @@
+{% extends 'home.html' %}
+{% block title %} Games List {% endblock %}
+{% block site %}
+    {% for game in games %}
+        <a href="{% url 'single_game' game.id %}">{{ game.title }}</a><br>
+        <br>
+        <br>
+    {% endfor %}
+{% endblock %}
