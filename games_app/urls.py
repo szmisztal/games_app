@@ -1,8 +1,9 @@
 from django.urls import path
-from .views import homepage, games_list, single_game
+from .views import HomepageView, GamesListView, SingleGameView, AddNewGame
 
 urlpatterns = [
-    path("", homepage, name = "homepage"),
-    path("games_list/", games_list, name = "games_list"),
-    path("single_game/<int:game_id>/", single_game, name = "single_game")
+    path("", HomepageView.as_view(), name = "homepage"),
+    path("games_list/", GamesListView.as_view(), name = "games_list"),
+    path("single_game/<int:pk>/", SingleGameView.as_view(), name = "single_game"),
+    path("add_game/", AddNewGame.as_view(), name = "add_game")
 ]
