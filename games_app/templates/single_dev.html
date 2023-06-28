@@ -5,4 +5,5 @@
     {% for game in games %}
         {{ game }}<br>
     {% endfor %}
+    <a href="{% url 'edit_dev' single_dev.id %}">Edit or delete Development Studio</a>
 {% endblock %}}

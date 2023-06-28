@@ -8,4 +8,5 @@
     {% else %}
         <p>Game`s not completed yet</p>
     {% endif %}
+    <a href="{% url 'edit_game' single_game.id %}">Edit or delete game</a>
 {% endblock %}}

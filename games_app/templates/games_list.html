@@ -1,11 +1,6 @@
 {% extends 'home.html' %}
 {% block title %} Games List {% endblock %}
 {% block site %}
-    {% if messages %}
-        {% for message in messages %}
-            {{ message }}
-        {% endfor %}
-    {% endif %}<br><br>
     {% for game in games %}
         <a href="{% url 'single_game' game.id %}">{{ game.title }}</a><br><br>
     {% endfor %}
