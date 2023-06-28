@@ -24,8 +24,7 @@ class Game(models.Model):
 
     def lower_str(self):
         if self.genre != "RPG":
-            self.genre = self.genre.lower()
-            return self.genre
+            return self.genre.lower()
         else:
             return self.genre
     def __str__(self):
