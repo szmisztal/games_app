@@ -1,8 +1,9 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Game, DevelopmentStudio
-from .forms import NewGameForm, NewDevForm
+from .forms import GameForm, DevForm
 from django.views import generic
 from django.contrib import messages
+from django.urls import reverse_lazy
 
 class HomepageView(generic.TemplateView):
     template_name = "home.html"
@@ -40,28 +41,55 @@ class SingleDevView(generic.DetailView):
 
 class AddNewGame(generic.CreateView):
     model = Game
-    form_class = NewGameForm
-    template_name = "add_game.html"
+    form_class = GameForm
+    template_name = "game_form.html"
     success_url = "/games_app/games_list/"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["new"] = True
+        return context
 
     def form_valid(self, form):
         response = super().form_valid(form)
         messages.success(self.request, "Game was created successfully")
         return response
 
-class AddDev(generic.CreateView):
+class AddNewDev(generic.CreateView):
     model = DevelopmentStudio
-    form_class = NewDevForm
-    template_name = "add_dev.html"
-    success_url = "/games_app/games_list/"
+    form_class = DevForm
+    template_name = "dev_form.html"
+    success_url = "/games_app/dev_studios/"
 
     def form_valid(self, form):
         response = super().form_valid(form)
         messages.success(self.request, "Development studio was created successfully")
         return response
 
-# class EditGame(generic.UpdateView):
-#     model
+class EditGame(generic.UpdateView):
+    model = Game
+    form_class = GameForm
+    template_name = "game_form.html"
+
+    def get_success_url(self):
+        return reverse_lazy("single_game", kwargs = {"pk": self.object.pk})
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        messages.success(self.request, "Game was edited successfully")
+        return response
+
+class EditDev(generic.UpdateView):
+    model = DevelopmentStudio
+    form_class = DevForm
+    template_name = "dev_form.html"
+
+    def get_success_url(self):
+        return reverse_lazy("single_dev", kwargs = {"pk": self.object.pk})
+
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        messages.success(self.request, "Developer was edited successfully")
+        return response
 
 
 
