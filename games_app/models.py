@@ -21,5 +21,13 @@ class Game(models.Model):
     premiere = models.PositiveSmallIntegerField(blank = True, null = True)
     developer = models.ForeignKey(DevelopmentStudio, on_delete = models.CASCADE, related_name = "games")
     completed = models.BooleanField(default = False)
+
+    def lower_str(self):
+        if self.genre != "RPG":
+            self.genre = self.genre.lower()
+            return self.genre
+        else:
+            return self.genre
     def __str__(self):
-        return f"{self.title} is {self.genre.lower()} genre game, published in {self.premiere} year by {self.developer}. Description: {self.short_description}"
+        genre = self.lower_str()
+        return f"{self.title} is {genre} genre game, published in {self.premiere} year by {self.developer}. Description: {self.short_description}"
