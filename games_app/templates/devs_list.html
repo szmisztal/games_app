@@ -1,0 +1,7 @@
+{% extends 'home.html' %}
+{% block title %} Devs List {% endblock %}
+{% block site %}
+    {% for dev in dev_studios %}
+        <a href="{% url 'single_dev' dev.id %}">{{ dev.name }}</a><br><br>
+    {% endfor %}
+{% endblock %}

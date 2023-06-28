@@ -1,0 +1,8 @@
+{% extends 'home.html' %}
+{% block title %} Single Dev {% endblock %}
+{% block site %}
+    <p>{{ single_dev }} games: </p><br>
+    {% for game in games %}
+        {{ game }}<br>
+    {% endfor %}
+{% endblock %}}
