@@ -3,7 +3,8 @@
 {% block site %}
     <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
+        {{ form }}
+        <p>If developer isn`t on the list, please add studio on: <a href="{% url 'add_dev' %}">Add new development studio</a>, and try again.</p><br>
         <button type="submit">Save</button>
     </form>
 {% endblock %}
