@@ -73,6 +73,7 @@ class EditGame(generic.UpdateView):
 
     def get_success_url(self):
         return reverse_lazy("single_game", kwargs = {"pk": self.object.pk})
+
     def form_valid(self, form):
         response = super().form_valid(form)
         messages.success(self.request, "Game was edited successfully")

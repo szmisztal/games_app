@@ -10,10 +10,12 @@ class Genre(models.TextChoices):
     ACTION = 'Action', "Action"
     ADVENTURE = 'Adventure', "Adventure"
     SPORTS = 'Sports', "Sports"
+
 class DevelopmentStudio(models.Model):
     name = models.CharField(max_length = 50, blank = False, unique = True)
     def __str__(self):
         return f"{self.name}"
+
 class Game(models.Model):
     title = models.CharField(max_length = 50, blank = False)
     genre = models.CharField(max_length = 20, choices = Genre.choices, default = Genre.ANOTHER)
