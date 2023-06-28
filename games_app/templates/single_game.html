@@ -1,9 +1,9 @@
 {% extends 'home.html' %}
 {% block title %} Single Game {% endblock %}
 {% block site %}
-    {{ game }}
+    {{ single_game }}
     <br>
-    {% if game.completed %}
+    {% if single_game.completed %}
         <p>Game`s completed by you</p>
     {% else %}
         <p>Game`s not completed yet</p>
