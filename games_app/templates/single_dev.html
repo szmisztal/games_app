@@ -1,9 +1,11 @@
 {% extends 'home.html' %}
 {% block title %} Single Dev {% endblock %}
 {% block site %}
-    <p>{{ single_dev }} games: </p><br>
+    <p>{{ single_dev }} games: </p>
+    <br>
     {% for game in games %}
-        {{ game }}<br>
+        {{ game }}
+        <br>
     {% endfor %}
     <a href="{% url 'edit_dev' single_dev.id %}">Edit or delete Development Studio</a>
 {% endblock %}}

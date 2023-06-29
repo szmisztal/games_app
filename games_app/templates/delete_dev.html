@@ -1,0 +1,11 @@
+{% extends 'home.html' %}
+{% block title %} Development Studio Delete {% endblock %}
+{% block site %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form }}
+        <p>Do you really want to delete this studio ? This dev`s games will be delete too.</p>
+        <br>
+        <button type="submit">Delete</button>  <a href="{% url 'single_dev' id %}">No</a>
+    </form>
+{% endblock %}

@@ -12,12 +12,19 @@
         {% for message in messages %}
             {{ message }}
         {% endfor %}
-    {% endif %}<br>
-    <a href="{% url 'homepage' %}">Homepage</a><br>
-    <a href="{% url 'games_list' %}">Games list</a><br>
-    <a href="{% url 'devs_list' %}">Development studios list</a><br>
-    <a href="{% url 'add_game' %}">Add new game</a><br>
-    <a href="{% url 'add_dev' %}">Add new development studio</a><br><br>
+    {% endif %}
+    <br>
+    <a href="{% url 'homepage' %}">Homepage</a>
+    <br>
+    <a href="{% url 'games_list' %}">Games list</a>
+    <br>
+    <a href="{% url 'devs_list' %}">Development studios list</a>
+    <br>
+    <a href="{% url 'add_game' %}">Add new game</a>
+    <br>
+    <a href="{% url 'add_dev' %}">Add new development studio</a>
+    <br>
+    <br>
     {% block site %} {% endblock %}
 </body>
 </html>

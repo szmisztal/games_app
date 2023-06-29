@@ -1,0 +1,11 @@
+{% extends 'home.html' %}
+{% block title %} Game Delete {% endblock %}
+{% block site %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form }}
+        <p>Do you really want to delete this game ?</p>
+        <br>
+        <button type="submit">Delete</button>  <a href="{% url 'single_game' game.id %}">No</a>
+    </form>
+{% endblock %}

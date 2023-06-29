@@ -5,8 +5,13 @@
         {% csrf_token %}
         {{ form }}
         {% if new %}
-            <p>If developer isn`t on the list, please add studio on: <a href="{% url 'add_dev' %}">Add new development studio</a>, and try again.</p><br>
+            <p>If developer isn`t on the list, please add studio on: <a href="{% url 'add_dev' %}">Add new development studio</a>, and try again.</p>
         {% endif %}
+        <br>
         <button type="submit">Save</button>
+        <br>
+        {% if game.id %}
+            <a href="{% url 'delete_game' game.id %}">Delete</a>
+        {% endif %}
     </form>
 {% endblock %}

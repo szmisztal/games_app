@@ -1,9 +1,12 @@
 {% extends 'home.html' %}
-{% block title %} Add new dev {% endblock %}
+{% block title %} Dev Form {% endblock %}
 {% block site %}
     <form method="post">
         {% csrf_token %}
         {{ form }}
+        <br>
         <button type="submit">Save</button>
+        <br>
+        <a href="{% url 'delete_dev' id %}">Delete</a>
     </form>
 {% endblock %}
