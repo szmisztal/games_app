@@ -13,6 +13,7 @@ class Genre(models.TextChoices):
 
 class DevelopmentStudio(models.Model):
     name = models.CharField(max_length = 50, blank = False, unique = True)
+
     def __str__(self):
         return f"{self.name}"
 
@@ -29,6 +30,7 @@ class Game(models.Model):
             return self.genre.lower()
         else:
             return self.genre
+
     def __str__(self):
         genre = self.lower_str()
         return f"{self.title} is {genre} genre game, published in {self.premiere} year by {self.developer}. Description: {self.short_description}"
