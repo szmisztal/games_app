@@ -92,7 +92,38 @@ class EditDev(generic.UpdateView):
         messages.success(self.request, "Developer was edited successfully")
         return response
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["id"] = self.get_object().id
+        return context
 
+class DeleteGame(generic.DeleteView):
+    model = Game
+    template_name = "delete_game.html"
 
+    def get_success_url(self):
+        return reverse_lazy("games_list")
 
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        messages.success(self.request, "Game was deleted successfully")
+        return response
+
+class DeleteDev(generic.DeleteView):
+    model = DevelopmentStudio
+    template_name = "delete_dev.html"
+
+    def get_success_url(self):
+        return reverse_lazy("devs_list")
+
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        messages.success(self.request, "Development studio was deleted successfully")
+        return response
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["id"] = self.get_object().id
+        return context
+    
 
